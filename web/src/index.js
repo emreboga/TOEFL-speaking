@@ -1,7 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import * as firebaseui from 'firebaseui'
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 import './index.css';
+import 'firebaseui/dist/firebaseui.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -17,11 +26,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
+const firebaseUI = new firebaseui.auth.AuthUI(getAuth());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App firebaseApp={firebaseApp} />
+    <App firebaseApp={firebaseApp} firebaseUI={firebaseUI} />
   </React.StrictMode>
 );
 
